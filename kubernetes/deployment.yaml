@@ -1,21 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: bravo
+  name: docker-node-mongo
   labels:
-    app: bravo
+    app: docker-node-mongo
 spec:
-  replicas: 3
+  replicas: 2
   selector:
     matchLabels:
-      app: bravo
+      app: docker-node-mongo
   template:
     metadata:
       labels:
-        app: bravo
+        app: docker-node-mongo
     spec:
       containers:
-      - name: bravo
-        image: teperwoman/bravo
+      - name: docker-node-mongo
+        image: teperwoman/mongo-app
         ports:
-        - containerPort: 8787
+        - containerPort: 3000
