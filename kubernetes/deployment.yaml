@@ -5,7 +5,7 @@ metadata:
   labels:
     app: docker-node-mongo
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: docker-node-mongo
@@ -16,6 +16,20 @@ spec:
     spec:
       containers:
       - name: docker-node-mongo
-        image: teperwoman/mongo-app
+        image: tftest/mongo-app
         ports:
         - containerPort: 3000
+
+---
+
+apiVersion: v1
+kind: Service
+metadata:
+  name: docker-node-mongo
+spec:
+  selector:
+    app: docker-node-mongo
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 3000
